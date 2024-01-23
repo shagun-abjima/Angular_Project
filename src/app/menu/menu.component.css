@@ -1,0 +1,19 @@
+*{
+    margin: 2%;
+}
+
+li{
+    margin-left: 8%;
+}
+li:hover{
+    background-color: yellowgreen;
+    color: maroon;
+}
+button{
+    color: black;
+    background-color: white;
+    border: none;
+    outline: none;
+    padding: 4px;
+    
+}

@@ -1,0 +1,17 @@
+<div>
+     <h2>Menu List</h2>
+     <input type="text" placeholder="Search Menu" [(ngModel)]="searchMenuText">
+     <ul>
+          <li *ngFor="let item of searchMenuItems()" (click)="addItemToTable(item)">{{ item.name }}</li>
+     </ul>
+</div>
+<div>
+     <h2>Selected Table: {{ selectedTable.name }}</h2>
+     <h3>Your orders</h3>
+     <ul>
+          <li *ngFor="let item of selectedTable.items">
+               {{ item.name }}
+               <button (click)="deleteItemFromTable(item)">Delete</button>
+          </li>
+     </ul>
+</div>
