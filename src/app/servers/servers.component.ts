@@ -8,20 +8,20 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
-  public server: {id: number, name: string, status: string};
+  
 
-  constructor(private serversService: ServersService, private router:Router, private Route:ActivatedRoute) { }
+
+
+
+
+  public servers: {id: number, name: string, status: string}[]=[];
+
+  constructor(private serversService: ServersService) { }
 
   ngOnInit() {
-    const id=+this.Route.snapshot.params['id'];
-    this.server=this.serversService.getServer(id);
-    this.Route.params
-    .subscribe((params:Params)=>{
-      this.server=this.serversService.getServer(+params['id'])})
-  
+    this.servers = this.serversService.getServers();
   }
   onReload(){
-  //this.router.navigate(['servers'],{relativeTo:this.Route})
-  }
-
+    //this.router.navigate(['servers'],{relativeTo:this.Route})
+    }
 }
