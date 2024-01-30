@@ -1,28 +1,41 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Recipe } from "./recipe.model";
-import { Ingredient } from "../shared/ingredient.model";
-import { ShoppingListService } from "../shopping-list/shopping-list.service";
-@Injectable()
-export class RecipeService{
-  recipeSelected=new EventEmitter<Recipe>();
-private  recipes: Recipe[] = [
-    new Recipe('Arrabiata pasta', 
-    'Recipe will be displayed here.',
-     'https://www.kitchensanctuary.com/wp-content/uploads/2023/07/Penne-alarrabiata-square-FS.jpg',
-     [new Ingredient('butter',1),new Ingredient('garlic and ginger',1),new Ingredient('soya sauce',1),]),
-    new Recipe('Alfredo pasta', 'Recipe will be displayed here.', 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2023-06-chicken-alfredo-pasta-reshoot%2Fchicken-alfredo-pasta-2-vertical',
-    [new Ingredient('butter',1),new Ingredient('garlic',1),new Ingredient('cream',1),])
-  ];
-  constructor(private slService:ShoppingListService){
+import { Injectable } from '@angular/core';
 
-  }
-  getRecipe(){
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+
+@Injectable()
+export class RecipeService {
+
+  private recipes: Recipe[] = [
+    new Recipe(
+      'Tasty Schnitzel',
+      'A super-tasty Schnitzel - just awesome!',
+      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+      [
+        new Ingredient('Meat', 1),
+        new Ingredient('French Fries', 20)
+      ]),
+    new Recipe('Big Fat Burger',
+      'What else you need to say?',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+      [
+        new Ingredient('Buns', 2),
+        new Ingredient('Meat', 1)
+      ])
+  ];
+
+  constructor(private slService: ShoppingListService) {}
+
+  getRecipes() {
     return this.recipes.slice();
   }
-  addIngredientsToShopping(ingredients:Ingredient[]){
-  this.slService.addIngredients(ingredients);
 
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
-  
 
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.slService.addIngredients(ingredients);
+  }
 }
