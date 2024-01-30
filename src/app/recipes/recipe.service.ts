@@ -9,19 +9,19 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
-      'Tasty Schnitzel',
-      'A super-tasty Schnitzel - just awesome!',
-      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+      'Alfredo Pasta',
+      'A super-tasty Alfredo - just awesome!',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6yECOnztIFUs8vqp6dK7LSwQEE6_Ym0i-0g&usqp=CAU',
       [
-        new Ingredient('Meat', 1),
+        new Ingredient('Garlic Bread', 1),
         new Ingredient('French Fries', 20)
       ]),
-    new Recipe('Big Fat Burger',
+    new Recipe('Pizza',
       'What else you need to say?',
-      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaL5RHcK_uaMwPjJLi-KIoSQlCKd38eXxBzg&usqp=CAU',
       [
-        new Ingredient('Buns', 2),
-        new Ingredient('Meat', 1)
+        new Ingredient('Fries', 2),
+        new Ingredient('Coke', 1)
       ])
   ];
 
