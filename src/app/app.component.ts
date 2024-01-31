@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Practice_code';
+  @ViewChild('f')signUpform:NgForm
+  topics=['Angular','React','Vue'];
+  defaultQuestion='pet';
+  answer='';
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+  }
+  //Approach:1
+  //onSubmit(form:NgForm){
+  //console.log(form)
+  //}
+  //Approach:2
+  onSubmit(){
+   console.log(this.signUpform);
+
+  }
 }
