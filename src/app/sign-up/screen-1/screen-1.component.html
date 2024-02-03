@@ -1,0 +1,6 @@
+<form [formGroup]="firstForm" (ngSubmit)="sendOTP()">
+    <h2>First Component</h2>
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="phone" formControlName="mobileNumber">
+    <button type="submit">Send OTP</button>
+    </form>

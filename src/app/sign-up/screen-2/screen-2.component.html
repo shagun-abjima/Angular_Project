@@ -1,0 +1,10 @@
+<div>
+    <h2>Second Component</h2>
+    <p>Mobile Number: {{ mobileNumber }}</p>
+    <!-- Display the mobile number passed from FirstComponent -->
+    <form [formGroup]="secondForm" (ngSubmit)="verifyOTP()">
+    <label for="otp">Enter OTP:</label>
+    <input type="text" formControlName="otp">
+    <button type="submit">Verify OTP</button>
+    </form>
+    </div>
