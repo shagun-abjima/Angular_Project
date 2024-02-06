@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
@@ -6,22 +7,23 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
-      'Alfredo Pasta',
-      'A super-tasty Alfredo - just awesome!',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6yECOnztIFUs8vqp6dK7LSwQEE6_Ym0i-0g&usqp=CAU',
+      'Tasty Schnitzel',
+      'A super-tasty Schnitzel - just awesome!',
+      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
       [
-        new Ingredient('Garlic Bread', 1),
+        new Ingredient('Meat', 1),
         new Ingredient('French Fries', 20)
       ]),
-    new Recipe('Pizza',
+    new Recipe('Big Fat Burger',
       'What else you need to say?',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaL5RHcK_uaMwPjJLi-KIoSQlCKd38eXxBzg&usqp=CAU',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
       [
-        new Ingredient('Fries', 2),
-        new Ingredient('Coke', 1)
+        new Ingredient('Buns', 2),
+        new Ingredient('Meat', 1)
       ])
   ];
 
@@ -37,5 +39,20 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
