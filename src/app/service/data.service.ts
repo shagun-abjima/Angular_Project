@@ -18,6 +18,7 @@ export class dataService {
 
                 }
                 return products;
+            
             }))
 
     }

@@ -43,23 +43,7 @@ export class HeaderComponent implements OnInit {
                 label: 'Contact Us',
                 icon: 'pi pi-fw pi-phone'
             }
-            ,
-            {
-                label: '',
-                icon: 'pi pi-fw pi-user',
-                items: [
-                  {
-                      label: 'Login',
-                      icon: 'pi pi-fw pi-align-left'
-                  },
-                  {
-                      label: 'Register',
-                      icon: 'pi pi-fw pi-align-right'
-                  },]
-            },
-            {
-              
-            }
+            
         ];
     }
 }
